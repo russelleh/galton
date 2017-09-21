@@ -77,13 +77,13 @@ document.addEventListener("DOMContentLoaded", function(event) {
   const r = window.devicePixelRatio;
   const l = 4;
 
-  canvas.width  = w * r;
-  canvas.height = h * r;
+  canvas.width  = w;
+  canvas.height = h;
 
   setInterval(function() {
     context.fillStyle = "black";
-    context.fillRect(0, 0, w, h);
-    index = draw(context, nodes[0], 0, 0, h);
+    context.fillRect(0, 0, canvas.width, canvas.height);
+    index = draw(context, nodes[0], 0, 0, canvas.height);
 
     extinguish(nodes[0]);
     if (nodes[0].extant) {
