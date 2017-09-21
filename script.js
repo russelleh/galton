@@ -72,13 +72,14 @@ document.addEventListener("DOMContentLoaded", function(event) {
   var   canvas  = document.getElementsByTagName("canvas")[0];
   const context = canvas.getContext("2d");
 
-  const w = window.innerWidth;
-  const h = window.innerHeight;
   const r = window.devicePixelRatio;
   const l = 4;
 
-  canvas.width  = w;
-  canvas.height = h;
+  canvas.height = window.innerHeight * r;
+  canvas.width  = window.innerWidth  * r;
+
+  canvas.style.width  = canvas.width  / r;
+  canvas.style.height = canvas.height / r;
 
   setInterval(function() {
     context.fillStyle = "black";
