@@ -1,10 +1,10 @@
 function draw(context, node, depth, index, h) {
   if (node.extant) {
-    context.fillStyle = "hsl(" + node.hue * 360 + ", 100%, 50%)";
+    context.fillStyle = "#fff";
     context.fillRect(depth, index % h, 1, 1);
     index += 1;
   } else {
-    context.fillStyle = "hsl(" + node.hue * 360 + ", 0%, 50%)";
+    context.fillStyle = "#444";
     context.fillRect(depth, index % h, 1, 1);
     index += 1;
   }
@@ -42,12 +42,10 @@ function propagate(node) {
       node.alive = false;
       var children = Math.floor(Math.random() * 3);
       for (var i = 0; i < children; i++) {
-        var hue_change = (Math.random() - 0.5) / 12;
         node.children.push({
           extant:   true,
           alive:    true,
           children: [],
-          hue:      node.hue + hue_change,
         });
       }
     } else {
@@ -69,7 +67,6 @@ document.addEventListener("DOMContentLoaded", function(event) {
     extant:   true,
     alive:    true,
     children: [],
-    hue:      Math.random(),
   });
 
   var   canvas  = document.getElementsByTagName("canvas")[0];
@@ -96,7 +93,6 @@ document.addEventListener("DOMContentLoaded", function(event) {
         extant:   true,
         alive:    true,
         children: [],
-        hue:      Math.random(),
       }];
     }
   }, 1000 / fps);
